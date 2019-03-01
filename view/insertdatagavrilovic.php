@@ -1,0 +1,185 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Insert Data Gavrilovic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="main.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</head>
+
+<body>
+    <?php
+    $dao = new DAO();
+    $koeficijenty = $dao->getAllKoefY();
+    $koeficijentxa = $dao->getAllKoefXA();
+    $koeficijentf = $dao->getAllKoefF();
+
+
+    $errors = isset($errors) ? $errors : array();
+    $msg = isset($msg) ? $msg : "";
+    ?>
+    <div class="container">
+        <div class="panel panel-login">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-auto">
+
+                        <h1 class="text-center" style="font-family: cursive, sans-serif; font-size: 26px; color:#2A65CB;">Proračun vučenog i suspendovanog nanosa po metodi prof.Gavrilovića</h1>
+                    </div>
+                    <div class="col-lg-12">
+                        <form action="routes.php" id="gavrilovic_form" role="form" style="display: block;">
+
+                            <div class="form-group"> Naziv rečnog sliva:<input type="text" name="imesliva" id="imesliva" tabindex="1" class="form-control" placeholder="name" required>
+                                <span style="color:red" ;>
+                                    <?php 
+                                    if (array_key_exists('imesliva', $errors)) {
+                                      echo $errors['imesliva'];
+                                    } ?></span>
+                            </div>
+
+                            <div class="form-group">Srednja nadmorska visina sliva [km] (celi broj ili npr x.y):<input type="number" name="Nsr" step="any" tabindex="2" class="form-control" id="Nsr" placeholder="Nsr" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('Nsr', $errors)) {
+                                      echo $errors['Nsr'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Srednji pad sliva dato u promilima (celi broj ili npr x.y):<input type="number" name="Jsr" step="any" tabindex="3" class="form-control" id="Jsr" placeholder="Jsr" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('Jsr', $errors)) {
+                                      echo $errors['Jsr'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Srednja godisnja temperatura vazduha (celi broj ili npr x.y):<input type="number" name="t" step="any" tabindex="4" class="form-control" id="t" placeholder="t" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('t', $errors)) {
+                                      echo $errors['t'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Dužina sliva po glavnom toku unos podataka [km] (celi broj ili npr x.y):<input type="number" name="Ls" step="any" tabindex="5" class="form-control" id="Ls" placeholder="Ls" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('Ls', $errors)) {
+                                      echo $errors['Ls'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Obim sliva [km] unos podataka (celi broj ili npr x.y):<input type="number" name="O" step="any" tabindex="6" class="form-control" id="O" placeholder="O" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('O', $errors)) {
+                                      echo $errors['O'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Nadmorska visina [km] unos podataka (celi broj ili npr x.y):<input type="number" name="Nu" step="any" tabindex="7" class="form-control" id="Nu" placeholder="Nu" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('Nu', $errors)) {
+                                      echo $errors['Nu'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Povrsina sliva [km2] unos podataka (celi broj ili npr x.y):<input type="number" name="Fs" step="any" tabindex="8" class="form-control" id="Fs" placeholder="Fs" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('Fs', $errors)) {
+                                      echo $errors['Fs'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Koeficijent "Y" predstavlja reciprocnu vrednost koeficijenta otpora zemljista na eroziju, i zavisi od geoloske podloge,klimata i pedoloskih tipova zemljista:
+                                <select type="number" name="y">
+                                    <option value=""></option>
+                                    <?php
+                                    foreach ($koeficijenty as $value) {
+                                      echo "<option value='$value[y]'>$value[tipzemljista], $value[y]</option>";
+                                    } ?>
+                                </select>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('y', $errors)) {
+                                      echo $errors['y'];
+                                    } ?></span>
+                            </div>
+
+                            <div class="form-group">
+                                Koeficijent "X" predstavlja uredjenje sliva ili erozionog podrucja i odnosi se na zasticenost zemljista od uticaja padavina:
+                                <select type="number" name="x">
+                                    <option value=""></option>
+                                    <?php
+                                    foreach ($koeficijentxa as $value) {
+                                      echo "<option value='$value[x]'>$value[uslovi],$value[x]</option>";
+                                    } ?>
+                                </select>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('x', $errors)) {
+                                      echo $errors['x'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Koeficijent "a" predstavlja vestacki stvoreni uslovi, antierozionim tehnickim ili bioloskim radovima u slivu ili podrucju:
+                                <select type="number" name="a">
+                                    <option value=""></option>
+                                    <?php
+                                    foreach ($koeficijentxa as $value) {
+                                      echo "<option value='$value[a]'>$value[uslovi],$value[a]</option>";
+                                    } ?>
+                                </select>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('a', $errors)) {
+                                      echo $errors['a'];
+                                    } ?></span>
+                            </div>
+
+                            <div class="form-group">
+                                Koeficijent "f" predstavlja brojni ekvivalent vidljivih i jasno izrazenih procesa erozije u slivu podrucja:
+                                <select type="number" name="f">
+                                    <option value=""></option>
+                                    <?php
+                                    foreach ($koeficijentf as $value) {
+                                      echo "<option value='$value[f]'>$value[uslovi],$value[f]</option>";
+                                    } ?>
+                                </select>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('f', $errors)) {
+                                      echo $errors['f'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                Srednja godisnja kolicina padavina [mm](celi broj ili npr x.y):<input type="number" name="Hgod" step="any" tabindex="13" class="form-control" id="Hgod" placeholder="Hgod" required>
+                                <span style="color:red" ;>
+                                    <?php if (array_key_exists('Hgod', $errors)) {
+                                      echo $errors['Hgod'];
+                                    } ?></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="pagescs" value="resultGavrilovic" class="btn btn-login">
+                            </div>
+                            <?php
+                            echo "<span style=color:red;>$msg</span>";
+                            ?>
+                        </form>
+                    </div>
+
+                </div> <!-- end row-->
+            </div>
+            <!--end-panel-body-->
+        </div>
+        <!--end panel-login-->
+
+
+    </div>
+    <!--end container-->
+</body>
+
+</html> 
