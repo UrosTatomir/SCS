@@ -267,6 +267,7 @@ class Controller{
     if(count($errors)==0){
 
          include 'modelgavrilovic.php';
+         
     }else{
 
        $msg= "Molimo vas da popunite formular ispravno.";

@@ -22,7 +22,7 @@
       require_once '../model/DAO.php';
  ?>
 
-<div class="jumbotron-fluid bg-light">
+<div class="container-fluid bg-light">
 
   <div class="container-flex text-center  font-italic">
      <div class="row justify-content-md-center shadow-lg p-3 mb-5  rounded" style="background-color: #FED502;"> 

@@ -13,7 +13,7 @@ class Gavrilovic{
     }
     public function koefErozijeZ($y,$x,$a,$f,$Jsr){ 
       
-       $Z=$y*$x*$a($f*($Jsr)**0.5);
+       $Z=$y*$x*$a*($f*($Jsr)**0.5);
           echo"Koeficije nt erozije Z= $Z <br>";
 
     }
