@@ -1,31 +1,15 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Model index</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-  <link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../css/styles.css">
-	<link rel="stylesheet" href="../css/bootstrap-grid.css">
-	<link rel="stylesheet" href="../css/font-awesome.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="main.js"></script>
-  <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>	
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/scripts.js"></script>
-</head>
-<body>
-<?php require_once '../controllers/hidrogram.php';
-      require_once '../model/DAO.php';
+
+<?php
+ include '../includes/header.php';
+ include '../includes/nav.php';
+ require_once '../controllers/hidrogram.php';
+ require_once '../model/DAO.php';
  ?>
 
-<div class="container-fluid bg-light">
+<!-- <div class="container"> -->
 
-  <div class="container-flex text-center  font-italic">
-     <div class="row justify-content-md-center shadow-lg p-3 mb-5  rounded" style="background-color: #FED502;"> 
+  
+     <div class="row text-center shadow-lg p-3 mb-5  rounded" style="background-color: #FED502;"> 
                         
         <div class="col col-2">
         
@@ -93,7 +77,7 @@
 	  </div>
 	 <div class="col-2">
         <?php
-        echo 'Trajanje efektivne kise :';
+        echo 'Trajanje efektivne kise Tk [min] :';
         echo '<br>';
         echo '<br><br>';         
         $hidroscs->trKi($Tk);      
@@ -105,7 +89,7 @@
         $hidroscs->vPHi($Tk, $a, $L, $Lc, $Iu);
         $hidroscs->vOHi($Tk, $k, $a, $L, $Lc, $Iu);
         $hidroscs->bazaHi($Tk, $k, $a, $L, $Lc, $Iu);
-        echo 'Merodavna kiša trajanja [min.]<br>';
+        echo 'Merodavna kiša trajanja Htp [min.]<br>';
         echo '<br><br>';
         $hidroscs->mKiTr($Tk, $Ap, $b, $c, $Bm, $H24h);
          
@@ -115,13 +99,13 @@
         <?php
         $hidroscs->defV($CN);
         $hidroscs->efPad($Tk, $Ap, $b, $c, $H24h, $Bm, $CN);
-        echo 'Max.ordinata sintetičkog jediničnog hidrograma[m3/smm]<br><br>';
+        echo 'Max.ordinata sintetičkog jediničnog hidrograma qmax [m3/smm]<br><br>';
         $hidroscs->maxO($Tk, $F, $k, $a, $L, $Lc, $Iu); 
         ?>	                  
 	 </div>
 	 <div class="col-2 bg-secondary text-white">
         <?php
-        echo 'Maksimalni proticaj Qmax verovatnoće pojave 1% [m3/s]';
+        echo 'Maksimalni proticaj Qmax verovatnoće pojave p= 1% [m3/s]';
         echo '<br><br>';
         $r = $hidroscs->maxP($Tk, $F, $Ap, $k, $a, $b, $c, $L, $Lc, $Iu, $H24h, $Bm, $CN);             
         ?>
@@ -135,9 +119,5 @@
     <button class="btn"><a href="routes.php?pagescs=printresult">Select Result</a></button>
     </div>
     
-	</div> <!--end row-->
-  	
- </div><!--end container--> 
-</div> <!--end jumbotron-->
-</body>
-</html>
+
+<?php include '../includes/footer.php'; ?>

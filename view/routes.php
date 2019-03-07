@@ -27,5 +27,9 @@ switch($pagescs){
   $controller->insertDataGavrilovic();
   break;
 
+  case 'showhome':
+  include 'index.php';
+  break;
+
 }
 ?>

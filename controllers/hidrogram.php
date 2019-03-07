@@ -14,7 +14,7 @@ class Hidrogram
             // echo 'Tk= ' . $value . ' min.<br>';
         echo"<table border=1px>
                 <tr>
-                    <td width=220>Tk = $value</td>
+                    <td width=220> $value</td>
                 </tr>
             </table>";
         }
@@ -22,7 +22,7 @@ class Hidrogram
     }
     public function vKa($L, $Lc, $Iu)
     {  //vreme kasnjenja----
-        $tp = 0.751 * ((($L * $Lc) / (($Iu) ** 0.5)) ** 0.336);
+        $tp = 0.751 * ((($L * $Lc)/(sqrt($Iu)))**0.336);
              // echo'vreme kasnjenja tp = '.$tp.'<br>';
         return $tp;
     }
@@ -73,7 +73,7 @@ class Hidrogram
             // echo 'Htp = '. $Htp.'<br>';
             echo "<table  style=color:white; border=1px>
                 <tr>
-                    <td width=220>Htp = $Htp</td>
+                    <td width=220> $Htp</td>
                 </tr>
             </table>";
         }
@@ -110,7 +110,7 @@ class Hidrogram
             // echo 'q_max = ' . $q_max . '<br>';
             echo "<table border=1px>
                 <tr>
-                    <td width=220>q_max = $q_max</td>
+                    <td width=220> $q_max</td>
                 </tr>
             </table>";
         }
@@ -129,7 +129,7 @@ class Hidrogram
             // echo 'Qmax = ' . $Qmax . '<br>';
             echo "<table style=color:white; border=1px>
                 <tr>
-                    <td width=220>Qmax = $Qmax</td>
+                    <td width=220> $Qmax</td>
                 </tr>
             </table>";
 

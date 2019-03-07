@@ -1,26 +1,7 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Insert Data Gavrilovic</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/bootstrap-grid.css">
-    <link rel="stylesheet" href="../css/font-awesome.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="main.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-</head>
-
-<body>
     <?php
+    include '../includes/header.php';
+    include '../includes/nav.php';
     $dao = new DAO();
     $koeficijenty = $dao->getAllKoefY();
     $koeficijentxa = $dao->getAllKoefXA();
@@ -163,7 +144,7 @@
                                     } ?></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="pagescs" value="resultGavrilovic" class="btn btn-login">
+                                <input type="submit" class="btn btn-primary" name="pagescs" value="resultGavrilovic" class="btn btn-login">
                             </div>
                             <?php
                             echo "<span style=color:red;>$msg</span>";
@@ -180,6 +161,4 @@
 
     </div>
     <!--end container-->
-</body>
-
-</html> 
+<?php include '../includes/footer.php'; ?>
