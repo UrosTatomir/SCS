@@ -6,6 +6,13 @@ $controller=new Controller();
 $pagescs=isset($_GET['pagescs'])?$_GET['pagescs']:"";
 
 switch($pagescs){
+  case 'showscs':
+  $controller->showScs();
+  break;
+
+  case 'showgavrilovic':
+  $controller->showGavrilovic();
+  break;
 
   case 'showinsert':
   $controller->showinsert();

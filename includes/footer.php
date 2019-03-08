@@ -17,7 +17,7 @@
     <div class="card-body">
         <div class="row no-gutters">
             <div class="col-md-3">
-                <h5 class="card-title" style="font-family: cursive, sans-serif; color: #2A65CB; font-size:22px;">CarsAndFreeRoads</h5>
+                <h5 class="card-title" style="font-family: cursive, sans-serif; color: #2A65CB; font-size:22px;">Estavela SCS i Gavrilovic</h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
@@ -36,14 +36,13 @@
             <div class="col-md-3">
                 <h5 class="card-title">Social networks links</h5>
 
-                <p><a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook-official fa-2x">facebook.com</i>
-                    </a></p>
+                <p><a href="https://www.facebook.com/bootsnipp"><i>facebook.com</i></a></p>
                 <!-- Twitter -->
-                <p><a href="https://twitter.com/bootsnipp" class="tw-ic">
-                        <i class="fa fa-twitter white-text fa-2x">twitter.com</i>
+                <p><a href="https://twitter.com/bootsnipp">
+                        <i>twitter.com</i>
                     </a></p>
-                <p><a href="https://www.instagram.com" class="ins-ic">
-                        <i class="fa fa-instagram white-text fa-2x">instagram.com </i>
+                <p><a href="https://www.instagram.com">
+                        <i>instagram.com </i>
                     </a></p>
             </div>
             <div class="col-md-3">
@@ -54,4 +53,5 @@
 </div>
 
 </body>
+
 </html> 
