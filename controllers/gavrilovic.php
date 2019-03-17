@@ -1,55 +1,45 @@
 <?php
+require_once '../model/DAO.php';
 class Gavrilovic{
-  
-    public function tempKoefT($t){
-        $Tk=sqrt(($t/10)+0.1);
-        echo"Temperaturni koeficijent iznosi Tk = $Tk<br><br>";
-    }
-   
-   
-    public function koefErozijeZ($y,$x,$a,$f,$Jsr){ 
-      
-       $Z=$y*$x*$a*($f*sqrt($Jsr));
-          echo"Koeficijent erozije Z= $Z <br><br>";
 
-    }
-    public function ukProNaUSlivu($t,$Hgod, $y, $x, $a, $f, $Jsr,$Fs){
+ public function metodProracunaGavrilovic($imesliva,$t, $Hgod, $y, $x, $a, $f, $Jsr, $Fs, $O, $Nsr, $Nu, $Ls){ 
+    
+        $Tk=sqrt(($t/10)+0.1);
+
+        echo"Temperaturni koeficijent iznosi Tk = $Tk<br><br>";
+    
+      
+       $Zk=$y*$x*$a*($f*sqrt($Jsr));
+
+          echo"Koeficijent erozije Z= $Zk <br><br>";
         
-      $Wgod=sqrt(($t/10)+0.1)*$Hgod*pi()*(($y*$x*$a*($f*sqrt($Jsr)))**1.5)*$Fs;
+        
+      $W=sqrt(($t/10)+0.1)*$Hgod*pi()*(($y*$x*$a*($f*sqrt($Jsr)))**1.5)*$Fs;
        
 
-      echo"Ukupna proizvodnja nanosa u slivu Wgod = $Wgod [m3/god]<br><br>";
-    }
-    public function koefRetenNanosa($O,$Nsr,$Nu,$Ls){ 
-
+      echo"Ukupna proizvodnja nanosa u slivu Wgod = $W [m3/god]<br><br>";
+    
       
-       $Ru=(sqrt($O*($Nsr -$Nu)))/(0.25*($Ls +10)); 
+       $R=(sqrt($O*($Nsr -$Nu)))/(0.25*($Ls +10)); 
 
-          echo"Koeficijent retencije nanosa Ru = $Ru <br><br>";
-    }
-    public function godKolNaKoDospDoUsca($t, $Hgod, $y, $x, $a, $f, $Jsr, $Fs, $O, $Nsr, $Nu, $Ls){
+          echo"Koeficijent retencije nanosa Ru = $R <br><br>";
+    
 
-        $Ggod= ((sqrt(($t/10)+0.1))*$Hgod*pi()*(($y*$x*$a*($f*sqrt($Jsr)))**1.5)*$Fs)*((sqrt($O*($Nsr-$Nu)))/(0.25*($Ls+10)));
+        $Gg= ((sqrt(($t/10)+0.1))*$Hgod*pi()*(($y*$x*$a*($f*sqrt($Jsr)))**1.5)*$Fs)*((sqrt($O*($Nsr-$Nu)))/(0.25*($Ls+10)));
 
-        echo"Godisnja kolicina nanosa koja dospeva do usca ili hidrometrijskog profila Ggod = $Ggod [m3/god]<br><br>";
+        echo"Godisnja kolicina nanosa koja dospeva do usca ili hidrometrijskog profila Ggod = $Gg [m3/god]<br><br>";
 
-    }
-    public function kolProdNanPoKmSliva($t, $Hgod, $y, $x, $a, $f, $Jsr,$O, $Nsr, $Nu, $Ls){
+    
+        $Ggkm=((sqrt(($t/10)+0.1))*$Hgod*pi()*(($y*$x*$a*($f*sqrt($Jsr)))**1.5))*((sqrt($O*($Nsr-$Nu)))/(0.25*($Ls+10)));
 
-        $Ggodkm=((sqrt(($t/10)+0.1))*$Hgod*pi()*(($y*$x*$a*($f*sqrt($Jsr)))**1.5))*((sqrt($O*($Nsr-$Nu)))/(0.25*($Ls+10)));
-
-        echo"Ukupna kolicina produkcije nanosa po 1km2 povrsine sliva Ggodkm = $Ggodkm [m3/km2]<br><br>";
-
-    }
-
-  
-
-
-
-
-
-
-
+        echo"Ukupna kolicina produkcije nanosa po 1km2 povrsine sliva Ggodkm = $Ggkm [m3/km2]<br><br>";
+        
+      $dao= new DAO();
+      $dao->insertGavrilovic($imesliva,$t, $Hgod, $y, $x, $a, $f, $Jsr, $Zk, $Fs, $O, $Nsr, $Nu, $Ls, $W, $R, $Gg, $Ggkm);
+      echo"Uspesan unos podataka u bazu";
+      
+   
+ }//end metodProracunaGavrilovic 
 
 }//end class Gavrilovic
 ?>

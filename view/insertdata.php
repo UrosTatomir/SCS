@@ -11,17 +11,12 @@ $msg=isset($msg)?$msg:"";
 $errors=isset($errors)?$errors:array();
 // var_dump($errors); 
 ?>
-<div class="container">
- <div class="panel panel-login">
+<div class="container mt-5 p-5">
+ <div class="container p-5 col-8 bg-dark text-white">
 					
-  <div class="panel-body">
-	<div class="row">
-     <div class="col-md-auto">
                              
-    <h1 class="text-center" style="font-family: cursive, sans-serif; font-size: 26px; color:#2A65CB;">Proračun Maksimalnog Proticaja "Metoda SCS"</h1>
+    <h1 class="text-center text-white" style="font-family: cursive, sans-serif; font-size: 22px;">Proračun Maksimalnog Proticaja "Metoda SCS"</h1>
                             
-     </div>
-	 <div class="col-lg-12">
 	 <form action="routes.php" id="scs-form" role="form" style="display: block;">
             <div class="form-group">
                 Naziv rečnog sliva:<input type="text" name="ime" id="ime" tabindex="1" class="form-control" placeholder="name" required>
@@ -99,18 +94,14 @@ $errors=isset($errors)?$errors:array();
                 } ?></span>	
             </div>
             <div class="form-group">
-              <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                <input type="submit" name="pagescs" id="result" tabindex="11" value="result" class="btn btn-login">
-                </div>
-              </div>
+                
+                <input type="submit" name="pagescs" id="result" tabindex="11" value="result" class="btn btn-primary">
+                
             </div>
             <?php echo"<span style=color:red;>$msg</span>"; ?>												
 		</form>							
-		</div>
-	  </div>
-	 </div>
-	</div>
+	
+	  </div>	
   </div>
     
-<?php  include '../includes/footer.php'; ?>
+<?php  include '../includes/footer1.php'; ?>

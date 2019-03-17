@@ -12,11 +12,11 @@ class Hidrogram
             array_push($result, $value);
 
             // echo 'Tk= ' . $value . ' min.<br>';
-        echo"<table border=1px>
-                <tr>
-                    <td width=220> $value</td>
-                </tr>
-            </table>";
+        // echo"<table border=1px>
+        //         <tr>
+        //             <td width=220> $value</td>
+        //         </tr>
+        //     </table>";
         }
         return $result;
     }
@@ -127,19 +127,19 @@ class Hidrogram
 
             array_push($result, $Qmax);
             // echo 'Qmax = ' . $Qmax . '<br>';
-            echo "<table style=color:white; border=1px>
-                <tr>
-                    <td width=220> $Qmax</td>
-                </tr>
-            </table>";
+            // echo "<table style=color:white; border=1px>
+            //     <tr>
+            //         <td width=220> $Qmax</td>
+            //     </tr>
+            // </table>";
 
         }
         rsort($result); //slazemo niz od najvece ka najmanjoj vrednosti
-        echo '<br>';
-        echo 'Usvaja se najveca vrednost Qmax = ';
+        // echo '<br>';
+        echo 'Usvaja se za p 1% Qmax = ';
         print_r($result[0]);
         echo ' m3/sec ';
-        echo '<br>';
+        // echo '<br>';
 
         return $result;
     }

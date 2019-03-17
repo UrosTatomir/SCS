@@ -2,7 +2,7 @@
 include '../includes/header.php';
 include '../includes/nav.php';
 ?>
-<div class="container">
+<div class="container mt-5 p-5">
     <div class="row justify-content-md-center shadow-lg p-3 mb-5  rounded" style="background-color: #FED502;">
         <div class="col col-2">
             <!-- empty col -->
@@ -140,4 +140,4 @@ include '../includes/nav.php';
     </div>
     <!--end row-->
 </div>
-<?php include '../includes/footer.php'; ?> 
+<?php include '../includes/footer1.php'; ?> 
