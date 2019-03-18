@@ -72,6 +72,7 @@ include '../includes/nav.php';
                     <p class="font-weight-bold font-italic">Sintetički jedinični trougaoni hidrogram</p>
                     <img src="../images/hidrogram.jpg" width="300" />
                 </div>
+                
     </div> 
 </div>
 <?php include '../includes/footer1.php'; ?>
