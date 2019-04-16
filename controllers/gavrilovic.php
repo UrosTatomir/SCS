@@ -17,7 +17,7 @@ class Gavrilovic{
 
              echo "V kategorija razornosti $Zk - vrlo slaba erozija tragovi erozije<br><br>";
 
-            }elseif($Zk >= 0.20 & $Zk <= 0.40){
+            }elseif($Zk >= 0.11 & $Zk <= 0.40){
 
                echo "IV kategorija $Zk - slaba erozija u vrednostima od:
                          <ul>

@@ -114,7 +114,6 @@ class Hidrogram
                 </tr>
             </table>";
         }
-
         return $result;
     }
     public function maxP($Tk, $F, $Ap, $k, $a, $b, $c, $L, $Lc, $Iu, $H24h, $Bm, $CN)
@@ -125,14 +124,7 @@ class Hidrogram
 
         $Qmax = (0.56 * $F) / ((($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * (($value / $a) + $this->vKa($L, $Lc, $Iu)))) * (((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) - (0.2 * $this->defV($CN))) ** 2) / ((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) + (0.8 * $this->defV($CN)));
 
-            array_push($result, $Qmax);
-            // echo 'Qmax = ' . $Qmax . '<br>';
-            // echo "<table style=color:white; border=1px>
-            //     <tr>
-            //         <td width=220> $Qmax</td>
-            //     </tr>
-            // </table>";
-
+            array_push($result, $Qmax);  
         }
         rsort($result); //slazemo niz od najvece ka najmanjoj vrednosti
         // echo '<br>';
@@ -140,7 +132,6 @@ class Hidrogram
         print_r($result[0]);
         echo ' m3/sec ';
         // echo '<br>';
-
         return $result;
     }
    
