@@ -20,47 +20,9 @@
     <script src="../js/bootstrap.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/scripts.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- <script src="../canvasjs/canvasjs.min.js"></script> -->
-    <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
+    
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
@@ -112,16 +74,10 @@
         require_once '../model/DAO.php';
         ?>
 
-        <div class="container mt-5 p-5">
-
-
-            <div class="row text-center shadow-lg p-3 mb-5  rounded">
-
+     <div class="container mt-5 p-5">
             <h4 class="text-center" style="font-family: cursive, sans-serif; color:#2A65CB;">Proračun Maksimalnog Proticaja "Metoda SCS"</h4>
             <?php echo "<h4> Rečni sliv  $ime </h4>"; ?>
-            </div>
-            <!--end row tag-->
-            <div class="row">
+            
                 <?php	
 
                 $ime = $_GET["ime"];
@@ -148,32 +104,39 @@
                 $hidroscs = new Hidrogram();
                 // $hidroscs->SCS($ime);
                 ?>
-                <div class="col-2 bg-primary text-white">
-                    <?php
-                    echo '<br>';
-                    echo 'Ulazni podaci :<br>';
-                    echo 'a = ' . $a . '<br>'; //min -> h;
-                    echo 'b = ' . $b . ' za 24h p = 1%<br>'; //za 24 h p = 1% 1440 ; 12h p = 1%  770 ;
-                    echo 'c = ' . $c . '<br>';
-                    echo 'k = ' . $k . '<br>';
-                    echo 'L = ' . $L . ' km.<br>';    //km;
-                    echo 'Lc= ' . $Lc . ' km.<br>'; //km;
-                    echo 'Iu= ' . $Iu . ' %.<br>';  // %;
-                    echo 'F = ' . $F . ' km2.<br>';  //km2;
-                    echo 'Ap= ' . $Ap . '<br>';
-                    echo 'Bm= ' . $Bm . 'koef. izolinije<br>'; //koef. sa grafikona za date uslove;
-                    echo 'H24h = ' . $H24h . '<br>'; // mm/24h;
-                    echo 'CN = ' . $CN . '<br>';
-                    echo '<br>';
-                    ?>
+                <div class="col-12 text-white">
+                
+                 
+                      <h5 class="text-dark">Ulazni podaci</h5>
+                  <table class="table">
+                 <tbody class="bg-dark text-white"> 
+                   <tr>  
+                    <td><?php echo'a='.$a.' min/h';?></td>
+                    <td><?php echo 'b=' . $b. ' za 24h p=1%<br>';?></td>
+                    <td><?php echo 'c='.$c; ?></td>
+                    <td><?php echo 'k=' . $k; ?></td>
+                    <td><?php echo 'L=' . $L . ' km.<br>'; ?></td>
+                    <td><?php echo 'Lc=' . $Lc . ' km.<br>'; ?></td>
+                    <td><?php echo 'Iu=' . $Iu . ' %.<br>';  ?></td>
+                    <td><?php echo 'F=' . $F . ' km2.<br>'; ?></td>
+                    <td><?php echo 'Ap=' . $Ap . '<br>'; ?></td>
+                    <td><?php echo 'Bm=' . $Bm . 'koef. izolinije<br>';?></td>
+                    <td><?php echo 'H24h=' . $H24h . '<br>'; ?></td>
+                    <td><?php echo 'CN=' . $CN . '<br>';?></td>
+                    
+                 </tr>
+                </tbody>
+                </table>    
                 </div>
-                <div class="col-2">
+            <div class="row">
+                <div class="col-3">
                     <?php
                     echo 'Trajanje efektivne kise Tk [min] :';
                     echo '<br>';
-                    echo '<br><br>';
+                    echo '<br>';
                     $tkr = $hidroscs->trKi($Tk);
                     foreach ($tkr as $value) {
+                        
                         echo "<table border=1px>
                 <tr>
                     <td width=220> $value</td>
@@ -182,104 +145,142 @@
                     }
                     ?>
                 </div>
-                <div class="col-2 bg-success text-white">
+                <?php
+                //vreme porasta hidrograma
+                $Tph=$hidroscs->vPHi($Tk, $a, $L, $Lc, $Iu);
+                //baza hidrograma $Tb
+                 $Tb=$hidroscs->bazaHi($Tk, $k, $a, $L, $Lc, $Iu);
+                 
+                ?>
+                <div class="col-3 bg-success text-white">
                     <?php
-                    $hidroscs->vKa($L, $Lc, $Iu);
-                    $hidroscs->vPHi($Tk, $a, $L, $Lc, $Iu);
-                    $hidroscs->vOHi($Tk, $k, $a, $L, $Lc, $Iu);
-                    $hidroscs->bazaHi($Tk, $k, $a, $L, $Lc, $Iu);
-                    echo 'Merodavna kiša trajanja Htp [min.]<br>';
-                    echo '<br><br>';
+                    
+                    echo 'Merodavna kiša trajanja Htp [min.]';
+                    echo '<br>';
                     $hidroscs->mKiTr($Tk, $Ap, $b, $c, $Bm, $H24h);
                     ?>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <?php
-                    $hidroscs->defV($CN);
-                    $hidroscs->efPad($Tk, $Ap, $b, $c, $H24h, $Bm, $CN);
+                    
                     echo 'Max.ordinata sintet.jedinicnog hidrograma qmax [m3/smm]';
-                    $hidroscs->maxO($Tk, $F, $k, $a, $L, $Lc, $Iu);
+                    $q_max=$hidroscs->maxO($Tk, $F, $k, $a, $L, $Lc, $Iu);
+                     
                     ?>
                 </div>
-                <div class="col-2 bg-secondary text-white">
+                <div class="col-3 bg-secondary text-white">
+                 <br><br>
+              
                     <?php
-            // echo 'Proticaj Qmax p= 1%[m3/s]';
-
-                    $r = $hidroscs->maxP($Tk, $F, $Ap, $k, $a, $b, $c, $L, $Lc, $Iu, $H24h, $Bm, $CN);
-                    foreach ($r as $Qmax) {
-                        echo "<table style=color:white; border=1px>
-                <tr>
-                    <td width=220> $Qmax</td>
-                </tr>
-            </table>";
-                    }
-                    ?>
+                    $result = $hidroscs->maxP($Tk, $F, $Ap, $k, $a, $b, $c, $L, $Lc, $Iu, $H24h, $Bm, $CN);    
+                    ?>       
                 </div>
-                <div class="col-2 text-danger font-weight-bold">
+                <div class="col-3 text-danger font-weight-bold">
                     <?php
-                    $hidroscs = new DAO();
-                    $hidroscs->insertScs($ime, $a, $b, $c, $k, $L, $Lc, $Iu, $Ap, $F, $Bm, $H24h, $CN, $r);
+                    $dao = new DAO();
+                    $dao->insertScs($ime, $a, $b, $c, $k, $L, $Lc, $Iu, $Ap, $F, $Bm, $H24h, $CN, $result);
                     echo "Uspesan unos podataka u bazu<br>";
                     ?>
                     <button class="btn"><a href="routes.php?pagescs=printresult">Select Result</a></button>
                 </div>
-            </div>
+                </div><!--end row-->
+            <hr class="invisible">
 
-            <div class="col-md-5">
-                <canvas id="myChart"></canvas>
-            </div>
-        </div>
+<!--grafikoni javascript-->
+
+<div class="col-md-8">
+<canvas id="myChart" width="600" height="400"></canvas>
+<script>
+                  var dataTk=JSON.parse('<?php echo json_encode($tkr); ?>')
+                  var dataQ = JSON.parse('<?php echo json_encode($result);?>');
+                    var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: dataTk,
+        datasets: [{ 
+            label: 'Hidrogram Qmax : m3/min', // Name the series
+            
+            data: dataQ,  
+            fill: false,
+            borderColor: '#2196f3', // Add custom color border (Line)
+            backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+            borderWidth: 3 // Specify bar border width
+        }]},
+    options: {
+      responsive: true, // Instruct chart js to respond nicely.
+      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+    }
+});
+</script>          
+</div>
+
+<div class="col-md-8">
+<canvas id="line-chart" width="600" height="400"></canvas>
+<script>
+                  var dataTk=JSON.parse('<?php echo json_encode($tkr); ?>')
+                  var dataq_max = JSON.parse('<?php echo json_encode($q_max);?>');
+                  
+                    var ctx = document.getElementById("line-chart").getContext('2d');
+new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: dataTk,
+    datasets: [{ 
+        data: dataq_max,
+        label: "Max.ordinata sintet.jedinicnog hidrograma qmax [m3/smm]",
+        borderColor: "#F50CD6",
+        borderWidth: 3,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Maksimalni proticaj oderedjene verovatnoće primenom kombinovane metode'
+    }
+  }
+});
+</script>
+</div>
+<div class="col-md-8">
+<canvas id="lineTb_chart" width="600" height="400"></canvas>
+<script>
+                  var dataq_max=JSON.parse('<?php echo json_encode($q_max); ?>')
+                  var dataTb = JSON.parse('<?php echo json_encode($Tb);?>');
+                  
+                    var ctx = document.getElementById("lineTb_chart").getContext('2d');
+new Chart(document.getElementById("lineTb_chart"), {
+  type: 'line',
+  data: {
+    labels: dataTb,
+    datasets: [{ 
+        data: dataq_max,
+        label: "Baza hidrograma Tb [h]",
+        borderColor: "#0B7EF5",
+        borderWidth: 3,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Baza hidrograma Tb u casovima '
+    }
+  }
+});
+</script>
+</div>
+</div> <!--end container-->
 </div> <!-- end container fluid-->
 <div class="card text-center">
     <div class="card-header bg-dark">
-        <ul class="nav nav-pills card-header-pills">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
+        <h5 class="card-title" style="font-family: cursive, sans-serif; color:#FDE600; font-size:18px;">Estavela SCS i Gavrilovic &#174;</h5>
+        
     </div>
-    <div class="card-body">
-        <div class="row no-gutters">
-            <div class="col-md-3">
-                <h5 class="card-title" style="font-family: cursive, sans-serif; color: #2A65CB; font-size:22px;">Estavela SCS i Gavrilovic</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="col-md-3">
-                <h5 class="card-title">Useful links</h5>
-                <p>
-                    <a class="dark-grey-text" href="#">Admin</a>
-                </p>
-                <p>
-                    <a class="dark-grey-text" href="#">Login</a>
-                </p>
-                <p>
-                    <a class="dark-grey-text" href="#">Logout</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <h5 class="card-title">Social networks links</h5>
-
-                <p><a href="https://www.facebook.com/bootsnipp"><i>facebook.com</i></a></p>
-                <!-- Twitter -->
-                <p><a href="https://twitter.com/bootsnipp">
-                        <i>twitter.com</i>
-                    </a></p>
-                <p><a href="https://www.instagram.com">
-                        <i>instagram.com </i>
-                    </a></p>
-            </div>
-            <div class="col-md-3">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44046.34778673461!2d20.373595703090647!3d44.81842912563373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6ac98796b9b4098e!2sEstavela!5e0!3m2!1ssr!2srs!4v1540830623478" width="170" height="170" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
+    
 </div>
 </body>
 </html> 

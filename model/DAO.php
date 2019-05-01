@@ -9,7 +9,7 @@ class DAO{
    private $GETALLKOEFB="SELECT * FROM koefb ORDER BY Bm ASC";
    private $INSERTSCS= "INSERT INTO scs(ime,a,b,c,k,L,Lc,Iu,Ap,F,Bm,H24h,CN,Qmax) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-   private $SELECTRESULT="SELECT * FROM scs ORDER BY id DESC LIMIT 3";
+   private $SELECTRESULT="SELECT * FROM scs ORDER BY id ASC";
 
    private $GETALLKOEFY="SELECT * FROM koefy ORDER BY idy ASC ";
 
@@ -18,6 +18,10 @@ class DAO{
    private $GETALLKOEFF="SELECT * FROM koeff ORDER BY idf ASC ";
 
    private $INSERTGAVRILOVIC="INSERT INTO gavrilovic(imesliva,t,Hgod,y,x,a,f,Jsr,Zk,Fs,O,Nsr,Nu,Ls,W,R,Gg,Ggkm)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+   private $CLEARALLDATA="DELETE FROM scs";
+
+   private $CLEARLASTDATA="DELETE FROM scs ORDER BY id DESC limit 1";
 
       public function __construct(){
 
@@ -36,7 +40,7 @@ class DAO{
          $result=$statement->fetchAll();
          return $result;
       }
-      public function insertScs($ime,$a,$b ,$c,$k,$L,$Lc,$Iu,$Ap,$F,$Bm,$H24h,$CN,$r){
+      public function insertScs($ime,$a,$b ,$c,$k,$L,$Lc,$Iu,$Ap,$F,$Bm,$H24h,$CN,$result){
          $statement=$this->db->prepare($this->INSERTSCS);
          $statement->bindValue(1,$ime);
          $statement->bindValue(2, $a);
@@ -51,7 +55,7 @@ class DAO{
          $statement->bindValue(11, $Bm);
          $statement->bindValue(12, $H24h);
          $statement->bindValue(13, $CN);
-         $statement->bindValue(14, $r[0]);
+         $statement->bindValue(14, max($result));
          $statement->execute();
 
       }
@@ -104,7 +108,18 @@ class DAO{
       $statement->execute();
 
       }
-
+   public function clearAllData()
+   {
+      $statement = $this->db->prepare($this->CLEARALLDATA);
+      $statement->execute();
+      
+   }
+   public function clearLastData()
+   {
+      $statement = $this->db->prepare($this->CLEARLASTDATA);
+      $statement->execute();
+      
+   }
     
    }//end classDAO
 ?>

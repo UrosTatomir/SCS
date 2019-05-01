@@ -287,6 +287,17 @@ class Controller{
       
 
    }//end function insertDataGavrilovic
+   public function showClearData(){
+      $dao= new Dao();
+      $dao->clearAllData();
+
+      include 'insertdata.php';
+   }
+   public function showClearLastData(){
+      $dao=new Dao();
+      $dao->clearLastData();
+      include 'selectresult.php';
+   }
 }
 
 ?>

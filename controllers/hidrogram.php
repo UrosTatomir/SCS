@@ -30,9 +30,10 @@ class Hidrogram
     {
         $result = [];
         foreach ($Tk as $value) {
-            array_push($result, $value / $a);
+            
 
             $Tph = ($value / $a) + $this->vKa($L, $Lc, $Iu);
+            array_push($result,$Tph);
 	          // echo'vreme porasta hidrograma Tph ='.$Tph.'<br>';
         }
         return $result;
@@ -42,10 +43,9 @@ class Hidrogram
         $result = [];
 
         foreach ($Tk as $value) {
-            array_push($result, $value / $a);
-
+            
             $Tr = $k * (($value / $a) + $this->vKa($L, $Lc, $Iu));
-	          
+	        array_push($result,$Tr);  
 	          // echo'vreme opadanja hidrograma Tr = '.$Tr.'<br>';
         }
         return $result;
@@ -54,10 +54,9 @@ class Hidrogram
     //baza hidrograma----//$Tb = $Tph + $Tr;//$Tb =($this->vOHi($Tk,$L,$Lc,$Iu)) + ($this->vPHi($Tk,$L,$Lc,$Iu));
         $result = [];
         foreach ($Tk as $value) {
-            array_push($result, $value / $a);
-
+            
             $Tb = (($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * ($value / $a) + $this->vKa($L, $Lc, $Iu));
-		       
+		    array_push($result,$Tb);   
 	           //echo'baza hidrograma Tb ='.$Tb.'<br>'; 
         }
         return $result;
@@ -67,9 +66,9 @@ class Hidrogram
        
         $result = [];
         foreach ($Tk as $value) {
-            array_push($result, $value / $b, $value * $c);
-
+            
             $Htp = ($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h;
+            array_push($result,$Htp);
             // echo 'Htp = '. $Htp.'<br>';
             echo "<table  style=color:white; border=1px>
                 <tr>
@@ -92,10 +91,11 @@ class Hidrogram
     {
         $result = [];
         foreach ($Tk as $value) {
-            array_push($result, $value / $b, $value * $c);
+            // array_push($result, $value / $b, $value * $c);
 
             $Pe = (((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) - (0.2 * $this->defV($CN))) ** 2) / ((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) + (0.8 * $this->defV($CN)));	       
-		       //echo'efektivne padavine Pe = '.$Pe.'<br>';tacna formula	        
+               //echo'efektivne padavine Pe = '.$Pe.'<br>';tacna formula
+            array_push($result,$Pe);	        
         }
 
         return $result;
@@ -104,15 +104,16 @@ class Hidrogram
     {
         $result = [];
         foreach ($Tk as $value) {
-            array_push($result, $value / $a);
-
+            
             $q_max = (0.56 * $F) / ((($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * (($value / $a) + $this->vKa($L, $Lc, $Iu))));
             // echo 'q_max = ' . $q_max . '<br>';
+            array_push($result, $q_max);
             echo "<table border=1px>
                 <tr>
                     <td width=220> $q_max</td>
                 </tr>
             </table>";
+       
         }
         return $result;
     }
@@ -120,22 +121,27 @@ class Hidrogram
     { //max proticaj----// $Qmax = $q_max * $Pe;
         $result = [];
         foreach ($Tk as $value) {		   	  	
-		         //array_push($result,$value/$a,$value/$b,$value*$c);
-
+		         
         $Qmax = (0.56 * $F) / ((($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * (($value / $a) + $this->vKa($L, $Lc, $Iu)))) * (((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) - (0.2 * $this->defV($CN))) ** 2) / ((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) + (0.8 * $this->defV($CN)));
 
-            array_push($result, $Qmax);  
+            array_push($result, $Qmax); 
+            
+            echo"<table border=1px>
+            <tr>
+             <td width=220>$Qmax</td>
+             </tr>
+             </table>"; 
         }
-        rsort($result); //slazemo niz od najvece ka najmanjoj vrednosti
+        // rsort($result); //slazemo niz od najvece ka najmanjoj vrednosti
         // echo '<br>';
         echo 'Usvaja se za p 1% Qmax = ';
-        print_r($result[0]);
+        echo max($result);
+        // print_r($result[0]);
         echo ' m3/sec ';
         // echo '<br>';
         return $result;
     }
    
 }//end class Hidrogram---
-
 
 ?>

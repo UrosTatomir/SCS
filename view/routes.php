@@ -38,5 +38,13 @@ switch($pagescs){
   include 'index.php';
   break;
 
+  case 'delete all':
+  $controller->showClearData();
+  break;
+
+  case 'delete last data':
+    $controller->showClearLastData();
+    break;
+
 }
 ?>

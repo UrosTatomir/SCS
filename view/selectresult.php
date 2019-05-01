@@ -17,54 +17,70 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js"></script>
 </head>
-<body>
+<body style="background:linear-gradient(to top,gray,white) no-repeat fixed center;">
 <?php require_once '../model/DAO.php';  ?>
-<div class="jumbotron-fluid bg-light">
-   <div class="container-flex text-center">
-      <div class="row">
+<div class="jumbotron-fluid">
+   <div class="container  p-5 text-center">
+      <div class="row col-8">
         <?php
         $dao = new DAO();
         $scsresult=$dao->selectResult();
-        echo "<table style= background-color:#0f0;   border=1px>
+        ?>
+        <table class="table">
+           <thead class='bg-dark text-white'>
            <tr>
-             <td width=130>ime reke</td>
-             <td width=50>a</td>
-             <td width=50>b</td>
-             <td width=50>c</td>
-             <td width=50>k </td>
-             <td width=50>L</td>
-             <td width=50>Lc</td>
-             <td width=50>Iu</td>
-             <td width=50>Ap</td>
-             <td width=50>F</td>
-             <td width=50>Bm </td>
-             <td width=50>H24h</td>
-             <td width=50>CN</td>
-             <td width=60>Qmax</td>          
+             <td>id</td>
+             <td>ime reke</td>
+             <td>a</td>
+             <td>b</td>
+             <td>c</td>
+             <td>k</td>
+             <td>L</td>
+             <td>Lc</td>
+             <td>Iu</td>
+             <td>Ap</td>
+             <td>F</td>
+             <td>Bm </td>
+             <td>H24h</td>
+             <td>CN</td>
+             <td>Qmax</td>          
            </tr>
-     </table>";
+         </thead>
+       <?php 
         foreach($scsresult as $value){
-            echo "<table style= background-color:#0f0;   border=1px>
+       ?>
+         <tbody>
            <tr>
-             <td width=130>$value[ime]</td>
-             <td width=50>$value[a]</td>
-             <td width=50>$value[b]</td>
-             <td width=50>$value[c]</td>
-             <td width=50>$value[k]</td>
-             <td width=50>$value[L]</td>
-             <td width=50>$value[Lc]</td>
-             <td width=50>$value[Iu]</td>
-             <td width=50>$value[Ap]</td>
-             <td width=50>$value[F]</td>
-             <td width=50>$value[Bm]</td>
-             <td width=50>$value[H24h]</td>
-             <td width=50>$value[CN]</td>
-             <td width=50>$value[Qmax]</td>
-                       
+             <td><?php echo $value['id']; ?></td>
+             <td><?php echo $value['ime']; ?></td>
+             <td><?php echo $value['a']; ?></td>
+             <td><?php echo $value['b'];?></td>
+             <td><?php echo $value['c']; ?></td>
+             <td><?php echo $value['k']; ?></td>
+             <td><?php echo $value['L']; ?></td>
+             <td><?php echo $value['Lc']; ?></td>
+             <td><?php echo $value['Iu'];?></td>
+             <td><?php echo $value['Ap']; ?></td>
+             <td><?php echo $value['F']; ?></td>
+             <td><?php echo $value['Bm']; ?></td>
+             <td><?php echo $value['H24h']; ?></td>
+             <td><?php echo $value['CN']; ?></td>
+             <td><?php echo $value['Qmax']; ?></td>            
            </tr>
-     </table>";
+        </tbody>
+         <?php
         }
         ?>
+     </table>
+     <form action="routes.php">
+        <button type="submit" name="pagescs" value="delete last data" class="btn btn-warning" >Clear Last Data</button>
+     </form>
+     <hr>
+     <form action="routes.php">
+        <button type="submit" name="pagescs" value="delete all" class="btn btn-danger" >Clear All Data</button>
+     </form>
+     <hr>
+     <h4><a href="insertdata.php">Start new SCS<a/></h4>
       </div>
    </div>
 </div>   
