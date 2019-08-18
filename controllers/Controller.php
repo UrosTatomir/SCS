@@ -298,6 +298,26 @@ class Controller{
       $dao->clearLastData();
       include 'selectresult.php';
    }
+   public function showResultGavrilovic(){
+   
+       include 'gavrilovicresult.php';
+   }
+   public function showClearLastDataGavrilovic(){
+      $dao= new DAO();
+      $dao->clearLastDataGavrilovic();
+      include 'gavrilovicresult.php';
+   }
+   public function clearAllDataGavrilovic(){
+      $dao=new DAO();
+      $dao->clearAllDataGav();
+      include 'insertdatagavrilovic.php';
+   }
+   public function logout(){
+      session_start();
+       unset($_SESSION['user']);
+    //  session_destroy();
+     header('Location:login.php');
+   }
 }
 
 ?>

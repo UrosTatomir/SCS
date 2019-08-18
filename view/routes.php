@@ -30,7 +30,7 @@ switch($pagescs){
   $controller->showInsertGavrilovic();
   break;
 
-  case 'resultGavrilovic':
+  case 'Result Gavrilovic':
   $controller->insertDataGavrilovic();
   break;
 
@@ -45,6 +45,22 @@ switch($pagescs){
   case 'delete last data':
     $controller->showClearLastData();
     break;
+
+  case 'printresultgavrilovic':
+  $controller->showResultGavrilovic();
+  break;
+
+  case 'delete last data gavrilovic':
+  $controller->showClearLastDataGavrilovic();
+  break;
+
+  case 'delete all data gavrilovic':
+  $controller->clearAllDataGavrilovic();
+  break;
+
+  case 'Logout':
+  $controller->logout();
+  break;
 
 }
 ?>

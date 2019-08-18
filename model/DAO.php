@@ -23,6 +23,12 @@ class DAO{
 
    private $CLEARLASTDATA="DELETE FROM scs ORDER BY id DESC limit 1";
 
+   private $SELECTRESULTGAVRILOVIC="SELECT * FROM gavrilovic ORDER BY idgav ASC";
+
+   private $CLEARLASTDATAGAVRILOVIC="DELETE FROM gavrilovic ORDER BY idgav DESC limit 1";
+
+   private $CLEARALLDATAGAV="DELETE FROM gavrilovic";
+
       public function __construct(){
 
          $this->db=DB::createInstance();
@@ -120,6 +126,24 @@ class DAO{
       $statement->execute();
       
    }
+   public function selectGavrilovicResult(){
+      $statement=$this->db->prepare($this->SELECTRESULTGAVRILOVIC);
+      $statement->execute();
+      $result=$statement->fetchAll();
+      return $result;
+   }
+   public function clearLastDataGavrilovic()
+   {
+      $statement = $this->db->prepare($this->CLEARLASTDATAGAVRILOVIC);
+      $statement->execute();   
+   }
+   public function clearAllDataGav()
+   {
+      $statement = $this->db->prepare($this->CLEARALLDATAGAV);
+      $statement->execute();
+      
+   }
+
     
    }//end classDAO
 ?>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Estavela SCS i Gavrilovic</title>
+    <title>Metode SCS i Gavrilovic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="stylesheet" href="../css/bootstrap.css">
@@ -26,7 +26,7 @@
 <body style="background:linear-gradient(to top,gray,white) no-repeat fixed center;">
     <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="../view/routes.php?pagescs=showhome" style="font-family: cursive, sans-serif; font-size:18px; color: #FDE600;">
-            Estavela SCS i Gavrilovic</a>
+             Metode SCS i Gavrilovic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

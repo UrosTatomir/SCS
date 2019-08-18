@@ -194,8 +194,8 @@
                       echo $errors['Hgod'];
                     } ?></span>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" name="pagescs" value="resultGavrilovic" class="btn btn-login">
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" name="pagescs" value="Result Gavrilovic" class="btn btn-login">
             </div>
             <?php
             echo "<span style=color:red;>$msg</span>";

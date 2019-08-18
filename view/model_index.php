@@ -26,9 +26,11 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
-
+ 
 <body style="background:linear-gradient(to top,gray,white) no-repeat fixed center;">
-    <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+
+ 
+      <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="../view/routes.php?pagescs=showhome" style="font-family: cursive, sans-serif; font-size:18px; color: #FDE600;">
             Estavela SCS i Gavrilovic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,13 +70,15 @@
             </form>
         </div>
     </nav>
+    
     <div class="container-fluid">
         <?php
         require_once '../controllers/hidrogram.php';
         require_once '../model/DAO.php';
+        
         ?>
 
-     <div class="container mt-5 p-5">
+    <div class="container mt-5 p-5">
             <h4 class="text-center" style="font-family: cursive, sans-serif; color:#2A65CB;">Proračun Maksimalnog Proticaja "Metoda SCS"</h4>
             <?php echo "<h4> Rečni sliv  $ime </h4>"; ?>
             
@@ -273,14 +277,18 @@ new Chart(document.getElementById("lineTb_chart"), {
 });
 </script>
 </div>
+
 </div> <!--end container-->
+
+
 </div> <!-- end container fluid-->
+
 <div class="card text-center">
     <div class="card-header bg-dark">
-        <h5 class="card-title" style="font-family: cursive, sans-serif; color:#FDE600; font-size:18px;">Estavela SCS i Gavrilovic &#174;</h5>
-        
+        <h5 class="card-title" style="font-family: cursive, sans-serif; color:#FDE600; font-size:18px;">Estavela SCS i Gavrilovic &#174;</h5> 
     </div>
     
 </div>
+ 
 </body>
 </html> 
