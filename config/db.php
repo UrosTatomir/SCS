@@ -3,10 +3,10 @@ class DB{
     private static $factory;
 
     public static function createInstance($config = null){
-       $settings['dbname']='estavela_scs';
+       $settings['dbname']='estavela_talas_db';
        $settings['dbhost']='localhost';
-       $settings['dbuser']='root';
-       $settings['dbpass']=''; 
+       $settings['dbuser']='estavela_talas';
+       $settings['dbpass']='Blustorm68.'; 
        
        try{
            $dsn = 'mysql:dbname='.$settings['dbname'].';host='. $settings['dbhost'];

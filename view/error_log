@@ -1,0 +1,96 @@
+
+[15-Jun-2020 01:24:50 Europe/Belgrade] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home/estavela/scs/controllers/Controller.php on line 1925
+[17-Jun-2020 16:33:53 Europe/Belgrade] PHP Parse error:  syntax error, unexpected '.', expecting end of file in /home/estavela/scs/view/edit_model_index.php on line 85
+[20-Jun-2020 23:04:24 Europe/Belgrade] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home/estavela/scs/view/model_index.php on line 389
+[23-Jun-2020 19:20:17 Europe/Belgrade] PHP Fatal error:  Uncaught Error: Call to undefined method DAO::getImage() in /home/estavela/scs/view/insertdata.php:11
+Stack trace:
+#0 /home/estavela/scs/index.php(178): include()
+#1 /home/estavela/scs/controllers/Controller.php(33): include('/home/estavela/...')
+#2 /home/estavela/scs/view/routes.php(18): Controller->showInsert()
+#3 {main}
+  thrown in /home/estavela/scs/view/insertdata.php on line 11
+[25-Jun-2020 01:29:35 Europe/Belgrade] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function DAO::insertGavrilovic(), 36 passed in /home/estavela/scs/controllers/gavrilovic.php on line 120 and exactly 37 expected in /home/estavela/scs/model/DAO.php:167
+Stack trace:
+#0 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606)
+#1 /home/estavela/scs/view/modelgavrilovic.php(115): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9', 'kacema.jpg')
+#2 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#3 /home/estavela/scs/controllers/Con in /home/estavela/scs/model/DAO.php on line 167
+[25-Jun-2020 01:39:27 Europe/Belgrade] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function DAO::insertGavrilovic(), 36 passed in /home/estavela/scs/controllers/gavrilovic.php on line 120 and exactly 37 expected in /home/estavela/scs/model/DAO.php:167
+Stack trace:
+#0 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606)
+#1 /home/estavela/scs/view/modelgavrilovic.php(115): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9', 'kacema.jpg')
+#2 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#3 /home/estavela/scs/controllers/Con in /home/estavela/scs/model/DAO.php on line 167
+[25-Jun-2020 01:40:37 Europe/Belgrade] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function DAO::insertGavrilovic(), 36 passed in /home/estavela/scs/controllers/gavrilovic.php on line 120 and exactly 37 expected in /home/estavela/scs/model/DAO.php:167
+Stack trace:
+#0 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606)
+#1 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9', 'kacema.jpg')
+#2 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#3 /home/estavela/scs/controllers/Con in /home/estavela/scs/model/DAO.php on line 167
+[25-Jun-2020 01:46:25 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controllers/Controller.p in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 01:48:18 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controllers/Controller.p in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 01:49:01 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controller in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 01:49:13 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controller in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 01:49:19 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.08, '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', 0.5806, '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', 0.7, '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', 0.67355347810618, '18', '23', '0.56', '0.001', '9', 47448.418308798, 0.75487703315179, 35817.721240691, 1989.8734022606, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '1.1', '0.3', '0.9', '0.3', '0.6', '0.2', '0.601', '0.6', '0.5', '0.2', '0.8', '0.2', '0.7', '0.6', '0.6', '0.2', '0.14', '18', '23', '0.56', '0.001', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controller in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 01:55:29 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.02, '1.2', '0.4', '0.9', '0.6', '', '', 0.05, '0.05', '1', '', '', '', '', 0.7202, '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', 0.055812652672547, '18', '23', '0.6', '0.01', '9', 1131.7815541802, 0.77552591395343, 877.72592420124, 48.762551344513, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '0.9', '0.6', '', '', '0.05', '1', '', '', '', '', '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', '18', '23', '0.6', '0.01', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controllers/Controller.php(493): include('/home/estave in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 02:01:07 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.02, '1.2', '0.4', '0.9', '0.6', '', '', 0.05, '0.05', '1', '', '', '', '', 0.7202, '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', 0.055812652672547, '18', '23', '0.6', '0.01', '9', 1131.7815541802, 0.77552591395343, 877.72592420124, 48.762551344513, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '0.9', '0.6', '', '', '0.05', '1', '', '', '', '', '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', '18', '23', '0.6', '0.01', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controllers/Controller.php(493): include('/home/estave in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 02:05:12 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.02, '1.2', '0.4', '0.9', '0.6', '', '', 0.05, '0.05', '1', '', '', '', '', 0.7202, '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', 0.055812652672547, '18', '23', '0.6', '0.01', '9', 1131.7815541802, 0.77552591395343, 877.72592420124, 48.762551344513, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '0.9', '0.6', '', '', '0.05', '1', '', '', '', '', '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', '18', '23', '0.6', '0.01', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controllers/Controller.php(493): include('/home/estave in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 02:05:21 Europe/Belgrade] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'image_name' cannot be null in /home/estavela/scs/model/DAO.php:207
+Stack trace:
+#0 /home/estavela/scs/model/DAO.php(207): PDOStatement->execute()
+#1 /home/estavela/scs/controllers/gavrilovic.php(120): DAO->insertGavrilovic('10', 'Kacema', '15', '1200', 1.02, '1.2', '0.4', '0.9', '0.6', '', '', 0.05, '0.05', '1', '', '', '', '', 0.7202, '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', 0.055812652672547, '18', '23', '0.6', '0.01', '9', 1131.7815541802, 0.77552591395343, 877.72592420124, 48.762551344513, NULL)
+#2 /home/estavela/scs/view/modelgavrilovic.php(116): Gavrilovic->metodProracunaGavrilovic('10', 'Kacema', '15', '1200', '1.2', '0.4', '0.9', '0.6', '', '', '0.05', '1', '', '', '', '', '0.2', '0.3', '0.801', '0.2', '1', '0.5', '0.14', '18', '23', '0.6', '0.01', '9', 'kacema.jpg')
+#3 /home/estavela/scs/index.php(188): include('/home/estavela/...')
+#4 /home/estavela/scs/controllers/Controller.php(493): include('/home/estave in /home/estavela/scs/model/DAO.php on line 207
+[25-Jun-2020 16:40:20 Europe/Belgrade] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 262144 bytes) in /home/estavela/scs/index.php on line 1
+[25-Jun-2020 16:40:49 Europe/Belgrade] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 262144 bytes) in /home/estavela/scs/index.php on line 1
+[25-Jun-2020 16:41:22 Europe/Belgrade] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 262144 bytes) in /home/estavela/scs/index.php on line 1
+[25-Jun-2020 16:42:27 Europe/Belgrade] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4096 bytes) in /home/estavela/scs/view/gavrilovicresult.php on line 106

@@ -1,91 +1,158 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Estavela SCS i Gavrilovic</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/bootstrap-grid.css">
-    <link rel="stylesheet" href="../css/font-awesome.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/scripts.js"></script>
+<?php
+// session_start();
+if(isset($_SESSION['user'])){
+$user=$_SESSION['user'];
+// $id_user=$user['id_user'];
 
-</head>
-<body style="background:linear-gradient(to top,gray,white) no-repeat fixed center;">
-<nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
-    <a class="navbar-brand" href="../view/routes.php?pagescs=showhome" style="font-family: cursive, sans-serif; font-size:18px; color: #FDE600;">
-            Estavela SCS i Gavrilovic</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="../view/routes.php?pagescs=showhome">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="routes.php?pagescs=showscs"> SCS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="routes.php?pagescs=showgavrilovic"> Gavrilovic</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Action
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../view/routes.php?pagescs=showinsert">Insert Data SCS</a>
-                    <a class="dropdown-item" href="../view/routes.php?pagescs=showinsertgavrilovic">Insert Data Gavrilovic</a>
-                    <!-- <a class="dropdown-item" href="../view/routes.php?page=showassign">Assigning a vehicle to the driver</a>
-                <a class="dropdown-item" href="../view/routes.php?page=showdrivers">Show Drivers</a> -->
-
-                    <!-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a> -->
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-        </form>
-    </div>
-</nav>
-<div class="container-fluid">
-        <?php
         require_once '../model/DAO.php';
         $dao = new DAO();
         $koeficijentK = $dao->getAllKoefK();
         $koeficijentB = $dao->getAllKoefB();
+        $image = $dao->getImageId($id_user);
 
         $msg = isset($msg) ? $msg : "";
         $errors = isset($errors) ? $errors : array();
-        // var_dump($errors); 
+        
         ?>
-    <div class="container mt-5 p-5">
-      <div class="container p-5 col-8 bg-dark text-white">
-           <h1 class="text-center text-white" style="font-family: cursive, sans-serif; font-size: 22px;">Proračun Maksimalnog Proticaja "Metoda SCS"</h1>
+    <nav aria-label="breadcrumb" class="col-md-5 offset-md-1">
+          <ol class="breadcrumb bg-transparent font-weight-light">
+            <li class="breadcrumb-item"><a href="https://estavela.in.rs">Estavela</a></li>
+            <li class="breadcrumb-item"><a href="https://scs.estavela.in.rs">Home</a></li>
+            <!--<li class="breadcrumb-item active"><a href="https://scs.estavela.in.rs/view/routes.php?pagescs=showscs">SCS Metoda</a></li>-->
+            <li class="breadcrumb-item active">SCS Insert data</li>
+          </ol>
+    </nav>
+    <div class="container">
+      <div class="container col-md-8">
+      <div class="row">
+          <div class="col-md-3 mb-3 ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="top" title="Koef.oblika hidrograma u funkciji povrs.sliva F"  data-target="#exampleModalLong">
+                  	Oblik hidrograma -K
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Koeficijent oblika hidrograma [k]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       <img class="img-fluid" src="../images/koeficijent-oblika-hidrograma-k.jpeg" alt="koeficijent-oblika-hidrograma-k"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             <!-- End Modal -->
+         </div>
+         <div class="col-md-3 mb-3 ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="top" title="Karta izolinija koeficijenta B R.Srbija" data-target="#ModalLong1">
+                  Karta izolinija -B SRB
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="ModalLong1" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle1" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle1">Karta izolinija koeficijenta  B R.Srbija</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       <img class="img-fluid" src="../images/karta-izolinija-koeficijenta-B.jpeg" alt="karta-izolinija-koeficijenta-B"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             <!-- End Modal -->
+         </div>
+         <div class="col-md-3 mb-3 ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="top" title="Brojevi krivih oticaja CN za prosecne vlaznosti" data-target="#ModalLong2">
+                  CN-prosec. vlaznosti
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="ModalLong2" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle2" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle2">Brojevi krivih oticaja CN za prosecne vlaznosti</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       <img class="img-fluid" src="../images/Brojevi-krivih-oticaja-CN-za-prosecne-vlaznosti.jpeg" alt="Brojevi krivih oticaja CN za prosecne vlaznosti"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             <!-- End Modal -->
+         </div>
+         <div class="col-md-3 mb-3 ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="top" title="Brojevi krivih oticaja CN za tri uslova vlaznosti" data-target="#ModalLong">
+                  Broj krivih oticaja CN
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="ModalLong" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle">Brojevi krivih oticaja CN za tri uslova vlaznosti</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       <img class="img-fluid" src="../images/tabela-br-krivih-CN.jpeg" alt="brojevi-krivih-CN"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             <!-- End Modal -->
+         </div>
+      </div><!--end row-->
+      </div><!--end container-->
+      <div class="container p-5 col-md-8 bg-light text-dark">
+           <h1 class="text-center text-dark" style="font-family: cursive, sans-serif; font-size: 22px;">Proračun Maksimalnog Proticaja "Metoda SCS"</h1>
         <form action="routes.php" id="scs-form" role="form" style="display: block;">
+            
+                <input type="hidden" name="id_user" value="<?php echo $id_user;  ?>">
+            
             <div class="form-group">
-                Naziv rečnog sliva:<input type="text" name="ime" id="ime" tabindex="1" class="form-control" placeholder="name" required>
+                Naziv rečnog sliva:<input type="text" name="ime" id="ime" tabindex="1" class="form-control form-control-sm" placeholder="name" required>
                 <span style="color:red" ;><?php if (array_key_exists('ime', $errors)) {
                                                 echo $errors['ime'];
                                             }  ?></span>
             </div>
             <div class="form-group">
-                Merodavno vreme trajanja kiše npr.(10,11,13,14,15,16,...):<input type="text" name="Tkh" id="Tkh" tabindex="2" class="form-control" placeholder="Tkh" required>
+                Merodavno vreme trajanja kiše npr.(10,11,13,14,15,16,...):<input type="text" name="Tkh" id="Tkh" tabindex="2" class="form-control form-control-sm" placeholder="Tkh" required>
                 <span style="color:red" ;><?php if (array_key_exists('Tkh', $errors)) {
                                                 echo $errors['Tkh'];
                                             } ?></span>
@@ -105,31 +172,33 @@
                                                 echo $errors['k'];
                                             } ?></span>
             </div>
-            <div class="form-group">
-                Dužina sliva po glavnom toku unos podataka (celi broj ili npr x.y):<input type="number" name="L" step="any" tabindex="4" class="form-control" id="L" placeholder="L" required>
-                <span style="color:red" ;><?php if (array_key_exists('L', $errors)) {
-                                                echo $errors['L'];
-                                            } ?></span>
+            <div class="form-row">
+                <div class="form-group col">
+                    <input type="number" name="L" step="any" tabindex="4" class="form-control form-control-sm" id="L" placeholder="L [km] (x.y)" required>
+                    <span style="color:red" ;><?php if (array_key_exists('L', $errors)) {
+                                                    echo $errors['L'];
+                                                } ?></span>
+                </div>
+                <div class="form-group col">
+                    <input type="number" name="Lc" step="any" tabindex="5" class="form-control form-control-sm" id="Lc" placeholder="Lc [km](x.y)" required> <span style="color:red" ;><?php if (array_key_exists('Lc', $errors)) {
+                                                echo $errors['Lc'];
+                                             } ?></span>
+                </div>
+                <div class="form-group col">
+                     <input type="number" name="Iu" step="any" tabindex="6" class="form-control form-control-sm" id="Iu" placeholder="Iu [%]" required> <span style="color:red" ;>
+                    <?php if (array_key_exists('Iu', $errors)) {
+                                echo $errors['Iu'];
+                           } ?></span>
+                </div>
+                <div class="form-group col">
+                    <input type="number" name="F" step="any" tabindex="7" class="form-control form-control-sm" id="F" placeholder="F [km2](x.y)" required>
+                    <span style="color:red" ;><?php if (array_key_exists('F', $errors)) {
+                                                    echo $errors['F'];
+                                                } ?></span>
+                </div>
             </div>
             <div class="form-group">
-                Rastojanje od težišta sliva do izlaznog profila (celi broj ili npr x.y):<input type="number" name="Lc" step="any" tabindex="5" class="form-control" id="Lc" placeholder="Lc" required> <span style="color:red" ;><?php if (array_key_exists('Lc', $errors)) {
-                                            echo $errors['Lc'];
-                                         } ?></span>
-            </div>
-            <div class="form-group">
-                Uravnati pad toka (celi broj ili npr x.y):<input type="number" name="Iu" step="any" tabindex="6" class="form-control" id="Iu" placeholder="Iu" required> <span style="color:red" ;>
-                <?php if (array_key_exists('Iu', $errors)) {
-                            echo $errors['Iu'];
-                       } ?></span>
-            </div>
-            <div class="form-group">
-                Površina sliva (celi broj ili npr x.y):<input type="number" name="F" step="any" tabindex="7" class="form-control" id="F" placeholder="F" required>
-                <span style="color:red" ;><?php if (array_key_exists('F', $errors)) {
-                                                echo $errors['F'];
-                                            } ?></span>
-            </div>
-            <div class="form-group">
-                Koeficijent B -dobija se na osnovu karte izolinija (celi broj ili npr x.y):
+                Koeficijent B -dobija se na osnovu karte izolinija(celi broj ili x.y):
                 <!-- <input type="number"name="Bm" step="any"tabindex="8" class="form-control"id="Bm"placeholder="B" required> -->
                 <select type="number" name="Bm">
                     <option value=""></option>
@@ -143,16 +212,29 @@
                                                 echo $errors['Bm'];
                                             } ?></span>
             </div>
-            <div class="form-group">
-                Maksimalna dnevna kiša verovatnoće pojave 1% (celi broj ili npr x.y):<input type="number" name="H24h" step="any" tabindex="9" class="form-control" id="H24h" placeholder="H24h" required>
-                <span style="color:red" ;><?php if (array_key_exists('H24h', $errors)) {
-                                                echo $errors['H24h'];
-                                            } ?></span>
+            <div class="row">
+                <div class="form-group col">
+                    <input type="number" name="H24h" step="any" tabindex="9" class="form-control form-control-sm " id="H24h" placeholder="H24h Maksimalna dnevna kiša[mm]" required>
+                    <span style="color:red" ;><?php if (array_key_exists('H24h', $errors)) {
+                                                    echo $errors['H24h'];
+                                                } ?></span>
+                </div>
+                <div class="form-group col">
+                    <input type="number" name="CN" step="any" tabindex="10" class="form-control form-control-sm" id="CN" placeholder="CN Broj krive oticaja" required> <span style="color:red" ;><?php if (array_key_exists('CN', $errors)) {
+                             echo $errors['CN'];
+                           } ?></span>
+                </div>
             </div>
-            <div class="form-group">
-                Broj krive oticaja (celi broj ili npr x.y):<input type="number" name="CN" step="any" tabindex="10" class="form-control" id="CN" placeholder="CN" required> <span style="color:red" ;><?php if (array_key_exists('CN', $errors)) {
-                         echo $errors['CN'];
-                       } ?></span>
+            <div class="form-group col-4 ml-n3">
+                Odaberite mapu sliva:
+                <select type="text" name="image_name">
+                    <option value=""></option>
+                    <?php
+                    foreach ($image as $value) {
+                        echo "<option value='$value[image_name]'>$value[ime_sliva] : $value[image_name]</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" name="pagescs" id="result" tabindex="11" value="result" class="btn btn-primary">
@@ -160,13 +242,10 @@
             <?php echo "<span style=color:red;>$msg</span>"; ?>
         </form>
 
-            </div>
-        </div>
-    </div> <!--end container fluid-->
-    <footer class=" bg-dark fixed-bottom">
-        <div class="container text-center">
-            <p><a class="text-white" href="#">Copyright by PHP DEVLOPERS 2019</a></p>
-        </div>
-    </footer>
-</body>
-</html> 
+     </div>
+  </div><!--end container -->
+    
+<?php }else{
+    
+    include 'login.php';
+} ?>

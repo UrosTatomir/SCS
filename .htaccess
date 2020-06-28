@@ -1,0 +1,8 @@
+
+RewriteEngine on
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{HTTP_HOST} ^(www\.)?scs.estavela\.in\.rs
+RewriteRule ^(.*)$ https://www.scs.estavela.in.rs/$1 [R,L]
+
+RewriteOptions inherit
+

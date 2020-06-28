@@ -9,21 +9,22 @@ class Hidrogram
     {    
         $result = [];
         foreach ($Tk as $value) {
-            array_push($result, $value);
-
-            // echo 'Tk= ' . $value . ' min.<br>';
-        // echo"<table border=1px>
-        //         <tr>
-        //             <td width=220> $value</td>
-        //         </tr>
-        //     </table>";
+            array_push($result, $value);   
+        }
+        return $result;
+    }
+    public function trKiH($Tk){
+        $result=[];
+        foreach($Tk as $value){
+            $Tkh=$value/60;
+            array_push($result,number_format($Tkh, 1, '.', ''));
         }
         return $result;
     }
     public function vKa($L, $Lc, $Iu)
     {  //vreme kasnjenja----
         $tp = 0.751 * ((($L * $Lc)/(sqrt($Iu)))**0.336);
-             // echo'vreme kasnjenja tp = '.$tp.'<br>';
+            //   echo'vreme kasnjenja tp = '.$tp.'<br>';
         return $tp;
     }
     public function vPHi($Tk, $a, $L, $Lc, $Iu)  //vreme porasta hidrograma---
@@ -32,7 +33,7 @@ class Hidrogram
         foreach ($Tk as $value) {
             
 
-            $Tph = ($value / $a) + $this->vKa($L, $Lc, $Iu);
+            $Tph = (($value/60) / 2) + $this->vKa($L, $Lc, $Iu);
             array_push($result,$Tph);
 	          // echo'vreme porasta hidrograma Tph ='.$Tph.'<br>';
         }
@@ -44,7 +45,7 @@ class Hidrogram
 
         foreach ($Tk as $value) {
             
-            $Tr = $k * (($value / $a) + $this->vKa($L, $Lc, $Iu));
+            $Tr = $k * ((($value/60) / 2) + $this->vKa($L, $Lc, $Iu));
 	        array_push($result,$Tr);  
 	          // echo'vreme opadanja hidrograma Tr = '.$Tr.'<br>';
         }
@@ -55,7 +56,7 @@ class Hidrogram
         $result = [];
         foreach ($Tk as $value) {
             
-            $Tb = (($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * ($value / $a) + $this->vKa($L, $Lc, $Iu));
+            $Tb = ((($value/60) /2) + $this->vKa($L, $Lc, $Iu)) + ($k *((($value/60) / 2) + $this->vKa($L, $Lc, $Iu)));
 		    array_push($result,$Tb);   
 	           //echo'baza hidrograma Tb ='.$Tb.'<br>'; 
         }
@@ -69,12 +70,7 @@ class Hidrogram
             
             $Htp = ($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h;
             array_push($result,$Htp);
-            // echo 'Htp = '. $Htp.'<br>';
-            echo "<table  style=color:white; border=1px>
-                <tr>
-                    <td width=220> $Htp</td>
-                </tr>
-            </table>";
+            
         }
 
         return $result;
@@ -82,8 +78,8 @@ class Hidrogram
     public function defV($CN)  //deficit vlage----
     {
         $d = 25.4 * ((1000 / $CN) - 10);           
-
-            //echo'deficit vlage d = '.$d.'<br>'; tacna formula
+   //var_dump($d);
+            //echo'deficit vlage d =  '. $d.' <br>'; //tacna formula
 
         return $d;
     }
@@ -94,10 +90,12 @@ class Hidrogram
             // array_push($result, $value / $b, $value * $c);
 
             $Pe = (((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) - (0.2 * $this->defV($CN))) ** 2) / ((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) + (0.8 * $this->defV($CN)));	       
-               //echo'efektivne padavine Pe = '.$Pe.'<br>';tacna formula
-            array_push($result,$Pe);	        
+            //   echo'efektivne padavine Pe = '.$Pe.'<br>'; //tacna formula
+               
+            array_push($result,$Pe);
+            
         }
-
+      
         return $result;
     }
     public function maxO($Tk, $F, $k, $a, $L, $Lc, $Iu) //max Ordinata-----//$q_max = (0.56 * $A)/$Tb;
@@ -105,16 +103,12 @@ class Hidrogram
         $result = [];
         foreach ($Tk as $value) {
             
-            $q_max = (0.56 * $F) / ((($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * (($value / $a) + $this->vKa($L, $Lc, $Iu))));
+            $q_max = (0.56 * $F) / (((($value/60) / 2) + $this->vKa($L, $Lc, $Iu)) + ($k *((($value/60) / 2) + $this->vKa($L, $Lc, $Iu))));
             // echo 'q_max = ' . $q_max . '<br>';
             array_push($result, $q_max);
-            echo "<table border=1px>
-                <tr>
-                    <td width=220> $q_max</td>
-                </tr>
-            </table>";
-       
         }
+        
+        
         return $result;
     }
     public function maxP($Tk, $F, $Ap, $k, $a, $b, $c, $L, $Lc, $Iu, $H24h, $Bm, $CN)
@@ -122,23 +116,24 @@ class Hidrogram
         $result = [];
         foreach ($Tk as $value) {		   	  	
 		         
-        $Qmax = (0.56 * $F) / ((($value / $a) + $this->vKa($L, $Lc, $Iu)) + ($k * (($value / $a) + $this->vKa($L, $Lc, $Iu)))) * (((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) - (0.2 * $this->defV($CN))) ** 2) / ((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) + (0.8 * $this->defV($CN)));
+        $Qmax = ((0.56 * $F) / (((($value /60)/2) + $this->vKa($L, $Lc, $Iu)) + ($k*((($value / 60))/2 + $this->vKa($L, $Lc, $Iu))))) * (((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) - (0.2 * $this->defV($CN))) ** 2) / ((($value / $b) * ((((1440 * $Ap) + 1) / (($value * $c) + 1)) ** $Bm) * $H24h) + (0.8 * $this->defV($CN)));
 
             array_push($result, $Qmax); 
-            
-            echo"<table border=1px>
-            <tr>
-             <td width=220>$Qmax</td>
-             </tr>
-             </table>"; 
         }
-        // rsort($result); //slazemo niz od najvece ka najmanjoj vrednosti
-        // echo '<br>';
-        echo 'Usvaja se za p 1% Qmax = ';
-        echo max($result);
-        // print_r($result[0]);
-        echo ' m3/sec ';
-        // echo '<br>';
+        
+        //---max result u nizu 
+        $n=0;
+        $maxresult=max($result);
+        foreach($result as $val){
+            $n++;
+            if($val==$maxresult){
+                $n;
+                session_start();
+                $_SESSION['n']=$n;
+                break;
+            }
+        }
+        //------
         return $result;
     }
    
