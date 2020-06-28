@@ -5,6 +5,7 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     
+<<<<<<< HEAD
 <?php 
 // session_start();
 
@@ -17,6 +18,44 @@ if(isset($_SESSION['user'])){
 if(isset($_SESSION['model_index'])){
     $model_index=$_SESSION['model_index'];
 }
+=======
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+ 
+<body style="background:linear-gradient(to top,gray,white) no-repeat fixed center;">
+
+ 
+      <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+        <a class="navbar-brand" href="../view/routes.php?pagescs=showhome" style="font-family: cursive, sans-serif; font-size:18px; color: #FDE600;">
+            Estavela SCS i Gavrilovic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../view/routes.php?pagescs=showhome">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="routes.php?pagescs=showscs"> SCS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="routes.php?pagescs=showgavrilovic"> Gavrilovic</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../view/routes.php?pagescs=showinsert">Insert Data SCS</a>
+                        <a class="dropdown-item" href="../view/routes.php?pagescs=showinsertgavrilovic">Insert Data Gavrilovic</a>
+                        <!-- <a class="dropdown-item" href="../view/routes.php?page=showassign">Assigning a vehicle to the driver</a>
+                    <a class="dropdown-item" href="../view/routes.php?page=showdrivers">Show Drivers</a> -->
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
 
 ?>
     
@@ -30,9 +69,23 @@ if(isset($_SESSION['model_index'])){
             <li class="breadcrumb-item active">Model SCS</li>
           </ol>
     </nav>
+<<<<<<< HEAD
      <div class="container mt-3" >
             <h1 class="text-center" style="font-family: cursive, sans-serif; color:#2A65CB; font-size:20px;">Proračun Maksimalnog Proticaja "Metoda SCS"</h1>
             <?php echo "<h6> Rečni sliv  $ime </h6>"; ?>
+=======
+    
+    <div class="container-fluid">
+        <?php
+        require_once '../controllers/hidrogram.php';
+        require_once '../model/DAO.php';
+        
+        ?>
+
+    <div class="container mt-5 p-5">
+            <h4 class="text-center" style="font-family: cursive, sans-serif; color:#2A65CB;">Proračun Maksimalnog Proticaja "Metoda SCS"</h4>
+            <?php echo "<h4> Rečni sliv  $ime </h4>"; ?>
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
             
                 <?php	
                 
@@ -476,6 +529,7 @@ new Chart(document.getElementById("line-chart"), {
        ?> 
     </div>
 </div>
+<<<<<<< HEAD
 <button class="btn btn-primary hidden-print" data-placement="top" title="Print project" onclick="printDiv('printable')"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
 <script>
     function printDiv(container) {
@@ -491,3 +545,20 @@ new Chart(document.getElementById("line-chart"), {
 </div> <!--end container-->
 
 </div> <!-- end container fluid-->
+=======
+
+</div> <!--end container-->
+
+
+</div> <!-- end container fluid-->
+
+<div class="card text-center">
+    <div class="card-header bg-dark">
+        <h5 class="card-title" style="font-family: cursive, sans-serif; color:#FDE600; font-size:18px;">Estavela SCS i Gavrilovic &#174;</h5> 
+    </div>
+    
+</div>
+ 
+</body>
+</html> 
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac

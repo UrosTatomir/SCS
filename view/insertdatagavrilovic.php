@@ -257,6 +257,7 @@ if(isset($_SESSION['user'])){
             <div class="form-group col-2 custom-select-sm">
                 <input type="number" name="pxa3" step="any" class="form-control form-control-sm" id="pxa3" placeholder=" P [%]"> 
             </div>
+<<<<<<< HEAD
         </div>
         <!-- end koef. Xa-->
         <div class="form-group col-4 ml-n3">
@@ -284,3 +285,22 @@ if(isset($_SESSION['user'])){
     
    include 'login.php'; 
 } ?>
+=======
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" name="pagescs" value="Result Gavrilovic" class="btn btn-login">
+            </div>
+            <?php
+            echo "<span style=color:red;>$msg</span>";
+            ?>
+        </form>
+      </div><!--end panel-login-->
+    </div><!--end container-->
+</div><!--end container fluid-->
+<footer class=" bg-dark fixed-bottom">
+    <div class="container text-center">
+        <p><a class="text-white" href="#">Copyright by PHP DEVLOPERS 2019</a></p>
+    </div>
+</footer>
+</body>
+</html> 
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac

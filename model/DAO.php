@@ -36,6 +36,7 @@ class DAO{
 
    private $CLEARLASTDATAGAVRILOVIC="DELETE FROM gavrilovic WHERE id_user=? ORDER BY idgav DESC limit 1";
 
+<<<<<<< HEAD
    private $CLEARALLDATAGAV="DELETE FROM gavrilovic WHERE id_user=?";
    
    private $GETALLUSERS="SELECT * FROM users";
@@ -67,6 +68,14 @@ class DAO{
    
    private $UPDATECN="UPDATE scs SET ime=?,L=?,F=?,CN=?,CN_ugar=?,p1=?,CN_okopavine_1=?,p21=?,CN_okopavine_2=?,p22=?,CN_okopavine_3=?,p23=?,CN_zitarice_1=?,p31=?,CN_zitarice_2=?,p32=?,CN_zitarice_3=?,p33=?,CN_mahunarke_1=?,p41=?,CN_mahunarke_2=?,p42=?,CN_mahunarke_3=?,p43=?,CN_pasnjaci_1=?,p51=?,CN_pasnjaci_2=?,p52=?,CN_pasnjaci_3=?,p53=?,CN_livade=?,p6=?,CN_sume_1=?,p71=?,CN_sume_2=?,p72=?,CN_sume_3=?,p73=?,CN_selo=?,p8=?,CN_put_zemljani=?,p9=?,CN_put_tvrdi=?,p10=?  WHERE id=?";
   
+=======
+   private $SELECTRESULTGAVRILOVIC="SELECT * FROM gavrilovic ORDER BY idgav ASC";
+
+   private $CLEARLASTDATAGAVRILOVIC="DELETE FROM gavrilovic ORDER BY idgav DESC limit 1";
+
+   private $CLEARALLDATAGAV="DELETE FROM gavrilovic";
+
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
       public function __construct(){
 
          $this->db=DB::createInstance();
@@ -221,13 +230,19 @@ class DAO{
       $statement->execute();
       
    }
+<<<<<<< HEAD
    public function selectGavrilovicResult($id_user){
       $statement=$this->db->prepare($this->SELECTRESULTGAVRILOVIC);
       $statement->bindValue(1,$id_user); 
+=======
+   public function selectGavrilovicResult(){
+      $statement=$this->db->prepare($this->SELECTRESULTGAVRILOVIC);
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
       $statement->execute();
       $result=$statement->fetchAll();
       return $result;
    }
+<<<<<<< HEAD
    public function clearLastDataGavrilovic($id_user)
    {
       $statement = $this->db->prepare($this->CLEARLASTDATAGAVRILOVIC);
@@ -479,6 +494,20 @@ class DAO{
          $statement->execute();
       }
     
+=======
+   public function clearLastDataGavrilovic()
+   {
+      $statement = $this->db->prepare($this->CLEARLASTDATAGAVRILOVIC);
+      $statement->execute();   
+   }
+   public function clearAllDataGav()
+   {
+      $statement = $this->db->prepare($this->CLEARALLDATAGAV);
+      $statement->execute();
+      
+   }
+
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
     
    }//end classDAO
 ?>

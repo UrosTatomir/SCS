@@ -10,6 +10,7 @@ if(isset($_SESSION['user'])){
 if(isset($_SESSION['model_gav'])){
 $model_gav=$_SESSION['model_gav'];
 
+<<<<<<< HEAD
 // $id_user=$_GET['id_user'];
 $imesliva =$_SESSION['model_gav'][0];
 $Nsr =$_SESSION['model_gav'][1];
@@ -53,6 +54,63 @@ $image_name=$_SESSION['model_gav'][27];
 </nav>
 <div class="container mt-3 " id="printable">
             
+=======
+<body style="background:linear-gradient(to top,gray,white) no-repeat fixed center;">
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+        <a class="navbar-brand" href="../view/routes.php?pagescs=showhome" style="font-family: cursive, sans-serif; font-size:18px; color: #FDE600;">
+            Metode SCS i Gavrilovic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../view/routes.php?pagescs=showhome">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="routes.php?pagescs=showscs"> SCS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="routes.php?pagescs=showgavrilovic"> Gavrilovic</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../view/routes.php?pagescs=showinsert">Insert Data SCS</a>
+                        <a class="dropdown-item" href="../view/routes.php?pagescs=showinsertgavrilovic">Insert Data Gavrilovic</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="container mt-5 p-5">
+            <?php
+            require_once '../controllers/gavrilovic.php';
+            require_once '../model/DAO.php';
+            $imesliva = $_GET['imesliva'];
+            $Nsr = $_GET['Nsr'];
+            $Jsr = $_GET['Jsr'];
+            $t = $_GET['t'];
+            $Ls = $_GET['Ls'];
+            $O = $_GET['O'];
+            $Nu = $_GET['Nu'];
+            $Fs = $_GET['Fs'];
+            $y = $_GET['y'];
+            $x = $_GET['x'];
+            $a = $_GET['a'];
+            $f = $_GET['f'];
+            $Hgod = $_GET['Hgod'];
+            ?>
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
             <div class="row">
                 <div class="col-6">
                     <h5 class="text-primary" style="font-size:18px;">Ulazni parametri</h5>
@@ -116,6 +174,7 @@ $image_name=$_SESSION['model_gav'][27];
                     $gavrilovic->metodProracunaGavrilovic($id_user,$imesliva, $t, $Hgod, $y1, $py1, $y2, $py2, $y3, $py3, $xa1, $pxa1, $xa2, $pxa2, $xa3, $pxa3, $f1, $pf1, $f2, $pf2, $f3, $pf3, $Jsr, $Fs, $O, $Nsr, $Nu, $Ls,$image_name);
                 
                     ?>
+<<<<<<< HEAD
                     <!--<div class="col-md-6 mt-5">-->
                     
                        <?php if(!empty($image_name)){ ?>
@@ -127,6 +186,9 @@ $image_name=$_SESSION['model_gav'][27];
                          }
                        ?> 
                     <!--</div>-->
+=======
+                <button class="btn"><a href="routes.php?pagescs=printresultgavrilovic">Select Result Gavrilovic</a></button>
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
                 </div>
                 
             </div>

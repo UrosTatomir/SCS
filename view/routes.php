@@ -57,10 +57,13 @@ switch($pagescs){
   case 'printresultgavrilovic':
   $controller->showResultGavrilovic();
   break;
+<<<<<<< HEAD
   
   case 'printresultidgav':
   $controller->showResultIdGav();
   break;
+=======
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
 
   case 'delete last data gavrilovic':
   $controller->showClearLastDataGavrilovic();
@@ -69,6 +72,7 @@ switch($pagescs){
   case 'delete all data gavrilovic':
   $controller->clearAllDataGavrilovic();
   break;
+<<<<<<< HEAD
   
   case 'showlogin':
   $controller->showLogin();
@@ -154,5 +158,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         break;
     }
     
+=======
+
+  case 'Logout':
+  $controller->logout();
+  break;
+
+>>>>>>> 6525f9a11d9645b090759bb9d0d8f0e10712b7ac
 }
 ?>
